@@ -1,0 +1,353 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.redhat.kafka</groupId>
+	<artifactId>ApacheCamelKafka</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
+	<name>ApacheCamelKafka</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+
+		<start-class>com.redhat.App</start-class>
+
+		<maven-surefire-plugin-version>2.19.1</maven-surefire-plugin-version>
+		<!-- <kie.version>6.5.0.Final-redhat-2</kie.version> -->
+		<kie.version>7.23.0.Final-redhat-00002</kie.version> 
+		
+  		</properties>
+
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.3.RELEASE</version>
+	</parent>
+	<dependencyManagement>
+    <dependencies>
+    
+      <!-- <dependency>
+        <groupId>org.drools</groupId>
+        <artifactId>drools-bom</artifactId>
+        <type>pom</type>
+<version>${kie.version}</version>
+         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jbpm</groupId>
+        <artifactId>jbpm-bom</artifactId>
+        <type>pom</type>
+<version>${kie.version}</version>
+         <scope>import</scope>
+      </dependency>
+      <dependency>
+  <groupId>org.jboss.as</groupId>
+  <artifactId>jboss-as-jms-client-bom</artifactId>
+  <version>${kie.version}</version>
+  <type>pom</type>
+</dependency>
+    </dependencies>
+  </dependencyManagement> -->
+	<dependencies>
+	
+	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- <version>2.0.0.RELEASE</version> -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+		<!-- dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.8</version>
+		</dependency-->
+
+		<!-- H2 DB -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+
+
+
+		<!-- Spring Boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+<!-- Drools -->
+<dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-api</artifactId>
+            <version>${kie.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-core</artifactId>
+            <version>${kie.version}</version>
+        </dependency>
+        <dependency>
+		<groupId>org.kie</groupId>
+		<artifactId>kie-ci</artifactId>
+		<version>${kie.version}</version>
+	</dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+            <version>${kie.version}</version>
+        </dependency>
+        <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-decisiontables</artifactId>
+      <version>${kie.version}</version>	
+    </dependency>
+    <dependency>
+	<groupId>org.drools</groupId>
+	<artifactId>drools-workbench-models-commons</artifactId>
+	<version>${kie.version}</version>	
+</dependency>
+    <dependency>
+	<groupId>org.drools</groupId>
+	<artifactId>drools-workbench-models-guided-dtable</artifactId>
+	 <version>${kie.version}</version>
+</dependency>
+	<dependency>
+			<groupId>org.kie.remote</groupId>
+			<artifactId>kie-remote-client</artifactId>
+			<version>6.5.0.Final-redhat-23</version>
+		</dependency>
+		
+		<dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-internal</artifactId>
+       <version>${kie.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.kie.server</groupId>
+        <artifactId>kie-server-client</artifactId>
+       <version>${kie.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.kie.server</groupId>
+        <artifactId>kie-server-api</artifactId>
+       <version>${kie.version}</version>
+    </dependency>
+    
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-ci</artifactId>
+			<version>${kie.version}</version>
+		
+		</dependency>
+		<dependency>
+    <groupId>org.kie</groupId>
+    <artifactId>kie-spring</artifactId>
+    <version>${kie.version}</version>
+</dependency>
+
+		
+		<dependency>
+    <groupId>org.jbpm</groupId>
+    <artifactId>jbpm-bpmn2</artifactId>
+			<version>${kie.version}</version>
+</dependency>
+		 <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-human-task-core</artifactId>
+           <version>${kie.version}</version>
+        </dependency>
+		<!-- Queuing -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>2.17.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring-boot</artifactId>
+			<version>2.17.3</version> <!-- use the same version as your Camel core version -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-kafka</artifactId>
+			<version>2.17.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.redhat.claim</groupId>
+			<artifactId>kafka-claim</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fraud.Opioid</groupId>
+			<artifactId>fraud</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+<groupId>com.cepruledemo</groupId>
+<artifactId>cepruleDemo</artifactId>
+<version>1.0.3</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl 
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-impl</artifactId>
+    <version>2.2.5</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-core</artifactId>
+    <version>2.9.5</version>
+</dependency>
+
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.5</version>
+</dependency>
+<dependency>
+    <groupId>com.thoughtworks.xstream</groupId>
+    <artifactId>xstream</artifactId>
+    <version>1.4.10</version>
+</dependency>-->
+
+<dependency>
+  <groupId>com.twilio.sdk</groupId>
+  <artifactId>twilio</artifactId>
+  <version>(7.0,7.9)</version>
+   <scope>provided</scope>
+</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.3.1</version>
+				<executions>
+					<execution>
+						<id>enforce-versions</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>display-info</goal>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>[3.2.3,)</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>${java.version}</version>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin-version}</version>
+				<configuration>
+					<reuseForks>false</reuseForks>
+					<skipTests>true</skipTests>
+					<junitArtifactName>junit:junit</junitArtifactName>
+					<encoding>UTF-8</encoding>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+					<argLine>-Xms256m -Xmx512m -XX:MaxPermSize=128m -ea
+						-Dfile.encoding=UTF-8</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<finalName>ApacheCamelKafka-v${version}</finalName>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-enforcer-plugin
+										</artifactId>
+										<versionRange>
+											[1.3.1,)
+										</versionRange>
+										<goals>
+											<goal>display-info</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
